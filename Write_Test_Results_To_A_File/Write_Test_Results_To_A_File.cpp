@@ -3,9 +3,16 @@
 
 #include <iostream>
 #include "String.h"
+#include <fstream>
+#include <ctime>  
 using namespace std;
 
+int Success();
+int CalcSuccess(int result, int test_num, string test_name);
+void SuccessPercent(int num_of_tests, int num_success);
+
 int main() {
+    int total_success = 0;
 
     char test_string[40];
     cout << "enter a string to test with" << endl;
@@ -15,12 +22,20 @@ int main() {
     int len = Test.Length();
     cout << "Length is : " << len << endl;
 
+    if (CalcSuccess(Success(), 1, "Length") == 1) {
+        total_success += 1;
+    }
+
     int index;
     cout << "Enter an index to find the character at the location" << endl;
     cin >> index;
     char at_index;
     at_index = Test.CharacterAt(index);
     cout << "Character at index " << index << " is " << at_index << endl;
+
+    if (CalcSuccess(Success(), 2, "CharacterAt") == 1) {
+        total_success += 1;
+    }
 
     char other_string[40];
     cout << "enter another string to test with" << endl;
@@ -30,6 +45,10 @@ int main() {
     bool equal;
     equal = Test.EqualTo(Other);
     cout << boolalpha << "The two strings are equal? " << equal << noboolalpha << endl;
+
+    if (CalcSuccess(Success(), 3, "EqualTo") == 1) {
+        total_success += 1;
+    }
 
     char first_append_string[40];
     cout << "enter another string to test with" << endl;
@@ -44,6 +63,10 @@ int main() {
     First_Append.Append(Second_Append);
     cout << "Appending the second string to the first string results : " << First_Append.CStr() << endl;
 
+    if (CalcSuccess(Success(), 4, "Append") == 1) {
+        total_success += 1;
+    }
+
     char first_prepend_string[40];
     cout << "enter another string to test with" << endl;
     cin >> first_prepend_string;
@@ -57,6 +80,10 @@ int main() {
     First_Prepend.Prepend(Second_Prepend);
     cout << "Prepending the second string to the first string results : " << First_Prepend.CStr() << endl;
 
+    if (CalcSuccess(Success(), 5, "Prepend") == 1) {
+        total_success += 1;
+    }
+
     char upper_string[40];
     cout << "enter a string with uppercase to test with" << endl;
     cin >> upper_string;
@@ -65,6 +92,10 @@ int main() {
     Upper.ToLower();
     cout << "The string in all lowercase is : " << Upper.CStr() << endl;
 
+    if (CalcSuccess(Success(), 6, "ToLower") == 1) {
+        total_success += 1;
+    }
+
     char lower_string[40];
     cout << "enter a string with lowercase to test with" << endl;
     cin >> lower_string;
@@ -72,6 +103,10 @@ int main() {
 
     Lower.ToUpper();
     cout << "The string in all uppercase is : " << Lower.CStr() << endl;
+
+    if (CalcSuccess(Success(), 7, "ToUpper") == 1) {
+        total_success += 1;
+    }
 
     char find_in_string[40];
     cout << "enter a string with another string inside it" << endl;
@@ -92,6 +127,10 @@ int main() {
         cout << "The first index for the find string is : " << location << endl;
     }
 
+    if (CalcSuccess(Success(), 8, "Find") == 1) {
+        total_success += 1;
+    }
+
     int start_at;
     cout << "Enter an index for the find function to start at" << endl;
     cin >> start_at;
@@ -101,6 +140,10 @@ int main() {
     }
     else {
         cout << "The first index for the find string after the start index is : " << location << endl;
+    }
+
+    if (CalcSuccess(Success(), 9, "Find With Start") == 1) {
+        total_success += 1;
     }
 
     char original_string[40];
@@ -121,10 +164,18 @@ int main() {
     Original.Replace(Find_2, Replace);
     cout << "The string after the find string is replaced is : " << Original.CStr() << endl;
 
+    if (CalcSuccess(Success(), 10, "Replace") == 1) {
+        total_success += 1;
+    }
+
     String Read_Write = String();
     cout << "enter a string for the program to read from the console" << endl;
     Read_Write.ReadFromConsole();
     Read_Write.WriteToConsole();
+
+    if (CalcSuccess(Success(), 11, "Read + Write") == 1) {
+        total_success += 1;
+    }
 
     char first_equality_string[40];
     cout << "enter a string to test with" << endl;
@@ -140,8 +191,16 @@ int main() {
     equality = Equal.operator==(Equal_2);
     cout << boolalpha << "The two strings are equal? : " << equality << noboolalpha << endl;
 
+    if (CalcSuccess(Success(), 12, "Equality Operator") == 1) {
+        total_success += 1;
+    }
+
     equality = Equal.operator!=(Equal_2);
     cout << boolalpha << "The two strings are not equal? : " << equality << noboolalpha << endl;
+
+    if (CalcSuccess(Success(), 13, "Inequality Operator") == 1) {
+        total_success += 1;
+    }
 
     char first_assignment_string[40];
     cout << "enter a string to test with" << endl;
@@ -157,6 +216,10 @@ int main() {
     cout << "The value assigned was : " << Assign.CStr() << endl;
     cout << "The value that did the assigning was : " << Assign_2.CStr() << endl;
 
+    if (CalcSuccess(Success(), 14, "Assignment Operator") == 1) {
+        total_success += 1;
+    }
+
     char index_string[40];
     cout << "enter a string to test with" << endl;
     cin >> index_string;
@@ -166,6 +229,10 @@ int main() {
     cout << "enter an index to check" << endl;
     cin >> index_operator;
     cout << "The value in the index is : " << Index.operator[](index_operator) << endl;
+
+    if (CalcSuccess(Success(), 15, "Index Operator") == 1) {
+        total_success += 1;
+    }
 
     char greater_string[40];
     cout << "enter a string to test with" << endl;
@@ -182,7 +249,53 @@ int main() {
     less_than = Greater.operator<(Less);
     greater_than = Greater.operator>(Less);
     cout << boolalpha << "The first string entered is less than the second? : " << less_than << noboolalpha << endl;
+
+    if (CalcSuccess(Success(), 16, "Less Than Operator") == 1) {
+        total_success += 1;
+    }
+
     cout << boolalpha << "The first string entered is greater than the second? : " << greater_than << noboolalpha << endl;
+
+    if (CalcSuccess(Success(), 17, "Greater Than Operator") == 1) {
+        total_success += 1;
+    }
+
+    SuccessPercent(17, total_success);
+}
+
+int Success() {
+    int result;
+    cout << "Was the result as expected? Type 1 if yes, 0 if no." << endl;
+    cin >> result;
+    return result;
+}
+
+int CalcSuccess(int result, int test_num, string test_name) {
+    fstream file;
+    file.open("results.txt", ios::app);
+    if (file.is_open()) {
+        if (result == 1) {
+            file << "Test " << test_num << " " << test_name << " Successful" << endl;
+        }
+        else {
+            file << "Test " << test_num << " " << test_name << " Failed" << endl;
+        }
+    }
+    file.close();
+    return result;
+}
+
+void SuccessPercent(int num_of_tests, int num_success) {
+    fstream file;
+    file.open("results.txt", ios::app);
+    float percent_successful;
+    percent_successful = ((float)num_success / (float)num_of_tests) * 100;
+    time_t now = time(0);
+    tm* ltm = localtime(&now);
+    if (file.is_open()) {
+        file << "Date : " << ltm->tm_mday << "/" << 1 + ltm->tm_mon << "/" << 1900 + ltm->tm_year << " Time : " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec << " Successful " << percent_successful << "%" << endl;
+    }
+    file.close();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
