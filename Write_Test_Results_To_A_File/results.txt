@@ -1,0 +1,36 @@
+Test 1 Length Successful
+Test 2 CharacterAt Successful
+Test 3 EqualTo Successful
+Test 4 Append Successful
+Test 5 Prepend Successful
+Test 6 ToLower Successful
+Test 7 ToUpper Successful
+Test 8 Find Successful
+Test 9 Find With Start Successful
+Test 10 Replace Successful
+Test 11 Read + Write Successful
+Test 12 Equality Operator Successful
+Test 13 Inequality Operator Successful
+Test 14 Assignment Operator Successful
+Test 15 Index Operator Successful
+Test 16 Less Than Operator Successful
+Test 17 Greater Than Operator Successful
+Date : 28/2/2024 Time : 22:14:28 Successful 100%
+Test 1 Length Successful
+Test 2 CharacterAt Successful
+Test 3 EqualTo Successful
+Test 4 Append Successful
+Test 5 Prepend Successful
+Test 6 ToLower Successful
+Test 7 ToUpper Successful
+Test 8 Find Successful
+Test 9 Find With Start Successful
+Test 10 Replace Successful
+Test 11 Read + Write Successful
+Test 12 Equality Operator Successful
+Test 13 Inequality Operator Successful
+Test 14 Assignment Operator Successful
+Test 15 Index Operator Successful
+Test 16 Less Than Operator Successful
+Test 17 Greater Than Operator Successful
+Date : 5/3/2024 Time : 21:52:4 Successful 100%
